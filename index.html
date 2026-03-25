@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Memories - For Her</title>
+
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+    <style>
+      :root {
+        --bg-start: #1a0b0b;
+        --bg-end: #3b1111;
+        --card: rgba(20, 8, 8, 0.84);
+        --border: rgba(255, 209, 122, 0.45);
+        --gold: #ffd17a;
+        --red: #ff4d5a;
+        --text: #fff7ea;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+        font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        background: radial-gradient(circle at 20% 20%, var(--bg-end), var(--bg-start));
+        color: var(--text);
+      }
+
+      .instructions {
+        position: fixed;
+        top: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(92vw, 560px);
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        backdrop-filter: blur(8px);
+        z-index: 10;
+        text-align: center;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+      }
+
+      .instructions h1 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+        letter-spacing: 0.08em;
+        color: var(--gold);
+      }
+
+      .instructions p {
+        margin: 0;
+        line-height: 1.4;
+        font-size: 0.95rem;
+      }
+
+      .tip {
+        position: fixed;
+        bottom: 14px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(92vw, 520px);
+        z-index: 10;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #ffe8be;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      @media (max-width: 640px) {
+        .instructions h1 {
+          font-size: 1.04rem;
+        }
+
+        .instructions p,
+        .tip {
+          font-size: 0.86rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="instructions">
+      <h1>FOR YOU</h1>
+      <p>
+        Allow camera access, then slowly turn around to see every memory.
+        Keep your phone upright and move gently.
+      </p>
+    </div>
+
+    <div class="tip">
+      Replace image files in the <strong>assets</strong> folder: memory-01.jpg to
+      memory-06.jpg
+    </div>
+
+    <a-scene
+      embedded
+      renderer="antialias: true; alpha: true"
+      vr-mode-ui="enabled: false"
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-assets>
+        <img id="m1" src="assets/memory-01.jpg" alt="Memory 1" />
+        <img id="m2" src="assets/memory-02.jpg" alt="Memory 2" />
+        <img id="m3" src="assets/memory-03.jpg" alt="Memory 3" />
+        <img id="m4" src="assets/memory-04.jpg" alt="Memory 4" />
+        <img id="m5" src="assets/memory-05.jpg" alt="Memory 5" />
+        <img id="m6" src="assets/memory-06.jpg" alt="Memory 6" />
+      </a-assets>
+
+      <a-entity position="0 2.3 -6">
+        <a-text
+          value="I AM SORRY"
+          color="#ff4d5a"
+          align="center"
+          width="24"
+          shader="msdf"
+        ></a-text>
+        <a-animation
+          attribute="position"
+          from="0 2.25 -6"
+          to="0 2.45 -6"
+          direction="alternate"
+          repeat="indefinite"
+          dur="1800"
+          easing="easeInOutSine"
+        ></a-animation>
+      </a-entity>
+
+      <a-text
+        value="I will always make you feel special"
+        color="#ffd17a"
+        align="center"
+        width="14"
+        position="0 1.2 -5"
+      ></a-text>
+
+      <a-text
+        value="You are my world"
+        color="#ffe6b5"
+        align="center"
+        width="13"
+        position="5 1.6 0"
+        rotation="0 -90 0"
+      ></a-text>
+
+      <a-text
+        value="I am sorry for being a dumb guy"
+        color="#ffe6b5"
+        align="center"
+        width="13"
+        position="-5 1.6 0"
+        rotation="0 90 0"
+      ></a-text>
+
+      <a-text
+        value="I am yours always"
+        color="#ffe6b5"
+        align="center"
+        width="13"
+        position="0 1.6 5"
+        rotation="0 180 0"
+      ></a-text>
+
+      <a-text
+        value="Please forgive me"
+        color="#ffd17a"
+        align="center"
+        width="13"
+        position="0 2.6 0"
+        rotation="90 0 0"
+      ></a-text>
+
+      <a-image
+        src="#m1"
+        position="-2.8 1.4 -4.8"
+        rotation="0 18 0"
+        width="1.9"
+        height="2.4"
+        material="shader: flat"
+      ></a-image>
+
+      <a-image
+        src="#m2"
+        position="2.8 1.4 -4.8"
+        rotation="0 -18 0"
+        width="1.9"
+        height="2.4"
+        material="shader: flat"
+      ></a-image>
+
+      <a-image
+        src="#m3"
+        position="5 1.5 0"
+        rotation="0 -90 0"
+        width="1.8"
+        height="2.3"
+        material="shader: flat"
+      ></a-image>
+
+      <a-image
+        src="#m4"
+        position="-5 1.5 0"
+        rotation="0 90 0"
+        width="1.8"
+        height="2.3"
+        material="shader: flat"
+      ></a-image>
+
+      <a-image
+        src="#m5"
+        position="2.1 1.4 4.8"
+        rotation="0 160 0"
+        width="1.8"
+        height="2.3"
+        material="shader: flat"
+      ></a-image>
+
+      <a-image
+        src="#m6"
+        position="-2.1 1.4 4.8"
+        rotation="0 -160 0"
+        width="1.8"
+        height="2.3"
+        material="shader: flat"
+      ></a-image>
+
+      <a-torus
+        position="0 0.9 -3.5"
+        radius="0.48"
+        radius-tubular="0.09"
+        color="#ff4d5a"
+        arc="330"
+        rotation="0 0 20"
+      >
+        <a-animation
+          attribute="rotation"
+          to="0 360 20"
+          loop="true"
+          dur="2800"
+          easing="linear"
+        ></a-animation>
+      </a-torus>
+
+      <a-entity light="type: ambient; intensity: 0.95; color: #ffffff"></a-entity>
+      <a-entity light="type: directional; intensity: 0.55; color: #ffd17a" position="1 3 2"></a-entity>
+
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
